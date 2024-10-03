@@ -192,3 +192,11 @@ zephyr_sources_ifdef(CONFIG_SOC_GECKO_SE
 zephyr_sources_ifdef(CONFIG_ENTROPY_GECKO_SE
   platform/security/sl_component/se_manager/src/sl_se_manager_entropy.c
 )
+
+
+zephyr_sources_ifdef(CONFIG_SOC_SERIES_EFR32MG24 platform/Device/SiliconLabs/EFR32MG24/Source/system_efr32mg24.c)
+zephyr_sources_ifdef(CONFIG_SOC_SERIES_EFR32MG24 platform/Device/SiliconLabs/EFR32MG24/Source/GCC/startup_efr32mg24.S)
+
+if(${CONFIG_SOC_SERIES_EFR32MG24})
+    set(SOC_LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/linker.ld CACHE INTERNAL "")
+endif()
